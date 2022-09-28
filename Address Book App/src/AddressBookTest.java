@@ -191,12 +191,27 @@ class AddressBookTest {
 	// User Story 3
 	
 	/**
+	 * TC-7
 	 * Contact object 1 with the following information stored in Address Book 1:
 	 * Name: Obi-Wan Kenobi
 	 * Phone Number: (283) 834-2812
 	 * Mailing Address: 120 Lightsaber Drive, Jedi Temple, Coruscant
 	 * Email Address: okenobi@jedi.org
+	 * 
+	 * Contact object 2 with the following information stored in Address Book 2:
+	 * Name: Yoda
+	 * Phone Number: (828) 263-2912
+	 * Mailing Address: 120 Lightsaber Drive, Jedi Temple, Coruscant
+	 * Email Address: yoda@jedi.org
+	 * 
 	 */
+	public void combineNoConflictingTest() {
+		AddressBook addressBook1 = new AddressBook();
+		addressBook1.addContact(obiWan);
+		AddressBook addressBook2 = new AddressBook();
+		addressBook2.addContact(yoda);
+		
+	}
 	
 	
 	
