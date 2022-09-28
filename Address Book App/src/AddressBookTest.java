@@ -155,6 +155,52 @@ class AddressBookTest {
 		assertEquals("(123) 456-7890", contacts.get("Obi Wan Kenobi").getPhoneNum());
 	}
 	
+	/**
+	 * TC6:
+	 * Contact object 1 with the following information stored in Address Book:
+	 * Name: Obi-Wan Kenobi
+	 * Phone Number: ""
+	 * Mailing Address: 120 Lightsaber Drive, Jedi Temple, Coruscant
+	 * Email Address: okenobi@jedi.org
+	 * 
+	 * Contact object 2:
+	 * Name: Obi-Wan Kenobi
+	 * Phone Number: (123) 456-7890
+	 * Mailing Address: ""
+	 * Email Address: okenobi@jedi.org
+	 * 
+	 * Expected Output:
+	 * The Address Book’s HashMap’s size should yield a value of 1, and 
+	 * the Contact in the HashMap should have information equal to:
+	 * Name: Obi-Wan Kenobi
+	 * Phone Number: (283) 834-2812
+	 * Mailing Address: 120 Lightsaber Drive, Jedi Temple, Coruscant
+     * Email Address: okenobi@jedi.org
+	 */
+	@Test
+	public void nonConflictingContactsTest() {
+		 Contact expectedContact = new Contact(obiWan.getName(), obiWan.getPhoneNum(), obiWan.getMailAddr(), obiWan.getEmail());
+		 Contact obiWan2 = new Contact(obiWan.getName(), obiWan.getPhoneNum(), "", obiWan.getEmail());
+		 obiWan.setPhoneNum("");
+		 book.addContact(obiWan);
+		 book.addContact(obiWan2);
+		 assertAll(() -> assertEquals(1, book.getContacts().size()),
+					() -> assertEquals(expectedContact, book.getContacts().get("Obi Wan Kenobi")));
+	 }
+	
+	// User Story 3
+	
+	/**
+	 * Contact object 1 with the following information stored in Address Book 1:
+	 * Name: Obi-Wan Kenobi
+	 * Phone Number: (283) 834-2812
+	 * Mailing Address: 120 Lightsaber Drive, Jedi Temple, Coruscant
+	 * Email Address: okenobi@jedi.org
+	 */
+	
+	
+	
+	
 	
 	/**TC8
 	 * 
