@@ -5,6 +5,16 @@ public class Contact {
 	private String mailAddr;
 	private String email;
 	
+	public Contact(String name, String phoneNum, String mailAddr, String email) {
+		if(name.length() <= 0) {
+			throw new RuntimeException("Name cannot be empty");
+		}
+		this.name = name.trim();
+		this.phoneNum = phoneNum.trim();
+		this.mailAddr = mailAddr.trim();
+		this.email = email.trim();
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -12,7 +22,10 @@ public class Contact {
 
 
 	public void setName(String name) {
-		this.name = name;
+		if(name.length() <= 0) {
+			throw new RuntimeException("Name cannot be empty");
+		}
+		this.name = name.trim();
 	}
 
 
@@ -24,7 +37,7 @@ public class Contact {
 
 
 	public void setPhoneNum(String phoneNum) {
-		this.phoneNum = phoneNum;
+		this.phoneNum = phoneNum.trim();
 	}
 
 
@@ -36,7 +49,7 @@ public class Contact {
 
 
 	public void setMailAddr(String mailAddr) {
-		this.mailAddr = mailAddr;
+		this.mailAddr = mailAddr.trim();
 	}
 
 
@@ -48,18 +61,6 @@ public class Contact {
 
 
 	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-
-	public Contact(String name, String phoneNum, String mailAddr, String email) {
-		if(name.length() <= 0) {
-			throw new RuntimeException("Name cannot be empty");
-		}
-		this.name = name.trim();
-		this.phoneNum = phoneNum.trim();
-		this.mailAddr = mailAddr.trim();
 		this.email = email.trim();
 	}
 	
