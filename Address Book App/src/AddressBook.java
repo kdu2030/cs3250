@@ -4,6 +4,9 @@ import java.util.HashMap;
 public class AddressBook {
 	private HashMap<String, Contact> contacts;
 
+	public static AddressBook combine(AddressBook one, AddressBook two) {
+		return new AddressBook();
+	}
 	
 	public AddressBook() {
 		contacts = new HashMap<String, Contact>();
