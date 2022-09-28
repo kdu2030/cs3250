@@ -217,5 +217,43 @@ class AddressBookTest {
 	
 	
 	
+	/**TC8
+	 * 
+	 * 
+	 */
+	
+	/**TC9
+	*Input: Contact object 1 with the following information stored in Address Book 1:
+	*Name: Obi-Wan Kenobi
+	*Phone Number: “”
+	*Mailing Address: 120 Lightsaber Drive, Jedi Temple, Coruscant
+	*Email Address: okenobi@jedi.org
+
+	*Contact object 2 with the following information stored in Address Book 2:
+	*Name: Obi-Wan Kenobi
+	*Phone Number: (283) 834-2812
+	*Mailing Address: “”
+	*Email Address: okenobi@jedi.org
+	*
+	*
+	*Output: After merging Address Book and Address Book 2, printing the new Address Book’s HashMap’s size should yield a value of 1, and the Contact in the HashMap should have information equal to:
+	*Name: Obi-Wan Kenobi
+	*Phone Number: (283) 834-2812
+	*Mailing Address: 120 Lightsaber Drive, Jedi Temple, Coruscant
+	*Email Address: okenobi@jedi.org 
+	*/
+	@Test
+	public void nonConflictingMergeTest() {
+		obiWan.setPhoneNum("");
+		Contact obiWan2 = new Contact("Obi Wan Kenobi", "(283) 834-2812", "", "okenobi@jedi.org");
+		Contact expectedObiWan3 = new Contact("Obi Wan Kenobi", "(283) 834-2812", "120 Lightsaber Drive, Jedi Temple, Coruscant", "okenobi@jedi.org");
+		book.addContact(obiWan);
+		AddressBook book2 = new AddressBook();
+		book2.addContact(obiWan2);
+		AddressBook book3 = AddressBook.combine(book, book2);
+		
+		assertEquals(book3.getContacts().keySet().size(), 2);
+		assertEquals(book3.getContacts().get("Obi Wan Kenobi"), expectedObiWan3);
+	}
 
 }
