@@ -9,8 +9,29 @@ public class AddressBook {
 		combinedBookContacts.putAll(one.getContacts());
 		for (String s:two.getContacts().keySet()) {
 			Contact current = one.getContacts().get(s);
-			if(two.getContacts().get(s) == null) {
-				combinedBookContacts.put(s, two.getContacts().get(s));
+			Contact contact = two.getContacts().get(s);
+			if(current == null) {
+				combinedBookContacts.put(s, contact);
+			}
+			else {
+				if(current.getPhoneNum().length() == 0 || contact.getPhoneNum().length() == 0) {
+					current.setPhoneNum(current.getPhoneNum() + contact.getPhoneNum());
+				}
+				else {
+					current.setPhoneNum(contact.getPhoneNum());
+				}
+				if(current.getMailAddr().length() == 0 || contact.getMailAddr().length() == 0) {
+					current.setMailAddr(current.getMailAddr() + contact.getMailAddr());
+				}
+				else {
+					current.setMailAddr(contact.getMailAddr());
+				}
+				if(current.getEmail().length() == 0 || contact.getEmail().length() == 0) {
+					current.setEmail(current.getEmail() + contact.getEmail());
+				}
+				else {
+					current.setEmail(contact.getEmail());
+				}
 			}
 		}
 			
@@ -36,14 +57,20 @@ public class AddressBook {
 		if(existingContact.getPhoneNum().length() == 0 || contact.getPhoneNum().length() == 0) {
 			existingContact.setPhoneNum(existingContact.getPhoneNum() + contact.getPhoneNum());
 		}
-		else if(existingContact.getMailAddr().length() == 0 || contact.getMailAddr().length() == 0) {
+		else {
+			existingContact.setPhoneNum(contact.getPhoneNum());
+		}
+		if(existingContact.getMailAddr().length() == 0 || contact.getMailAddr().length() == 0) {
 			existingContact.setMailAddr(existingContact.getMailAddr() + contact.getMailAddr());
 		}
-		else if(existingContact.getEmail().length() == 0 || contact.getEmail().length() == 0) {
+		else {
+			existingContact.setMailAddr(contact.getMailAddr());
+		}
+		if(existingContact.getEmail().length() == 0 || contact.getEmail().length() == 0) {
 			existingContact.setEmail(existingContact.getEmail() + contact.getEmail());
 		}
 		else {
-			contacts.put(contact.getName(), contact);
+			existingContact.setEmail(contact.getEmail());
 		}
 	}
 	
