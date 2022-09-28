@@ -4,8 +4,12 @@ import java.util.HashMap;
 public class AddressBook {
 	private HashMap<String, Contact> contacts;
 
-	public static AddressBook combine(AddressBook one, AddressBook two) {
-		return new AddressBook();
+	public static AddressBook combineTwo(AddressBook one, AddressBook two) {
+		AddressBook combinedBook = new AddressBook();
+		HashMap<String, Contact> combinedBookContacts = combinedBook.getContacts();
+		combinedBookContacts.putAll(one.getContacts());
+		combinedBookContacts.putAll(two.getContacts());
+		return combinedBook;
 	}
 	
 	public AddressBook() {
@@ -37,7 +41,7 @@ public class AddressBook {
 			contacts.put(contact.getName(), contact);
 		}
 	}
-
+	
 
 
 	public HashMap<String, Contact> getContacts() {

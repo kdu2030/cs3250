@@ -205,12 +205,14 @@ class AddressBookTest {
 	 * Email Address: yoda@jedi.org
 	 * 
 	 */
+	@Test
 	public void combineNoConflictingTest() {
 		AddressBook addressBook1 = new AddressBook();
 		addressBook1.addContact(obiWan);
 		AddressBook addressBook2 = new AddressBook();
 		addressBook2.addContact(yoda);
-		
+		AddressBook addressBookCombined = AddressBook.combineTwo(addressBook1, addressBook2);
+		assertEquals(2, addressBookCombined.getContacts().keySet().size());
 	}
 	
 	
@@ -250,7 +252,7 @@ class AddressBookTest {
 		book.addContact(obiWan);
 		AddressBook book2 = new AddressBook();
 		book2.addContact(obiWan2);
-		AddressBook book3 = AddressBook.combine(book, book2);
+		AddressBook book3 = AddressBook.combineTwo(book, book2);
 		
 		assertEquals(book3.getContacts().keySet().size(), 2);
 		assertEquals(book3.getContacts().get("Obi Wan Kenobi"), expectedObiWan3);
