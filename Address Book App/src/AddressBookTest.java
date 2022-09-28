@@ -165,7 +165,7 @@ class AddressBookTest {
 	 * 
 	 * Contact object 2:
 	 * Name: Obi-Wan Kenobi
-	 * Phone Number: (123) 456-7890
+	 * Phone Number: (283) 834-2812
 	 * Mailing Address: ""
 	 * Email Address: okenobi@jedi.org
 	 * 
@@ -243,7 +243,7 @@ class AddressBookTest {
 		book.addContact(obiWan);
 		AddressBook book2 = new AddressBook();
 		book2.addContact(obiWan2);
-		AddressBook book3 = AddressBook.combine(book, book2);
+		AddressBook book3 = AddressBook.combineTwo(book, book2);
 		
 		assertEquals(book3.getContacts().keySet().size(), 1);
 	}
@@ -277,8 +277,7 @@ class AddressBookTest {
 		AddressBook book2 = new AddressBook();
 		book2.addContact(obiWan2);
 		AddressBook book3 = AddressBook.combineTwo(book, book2);
-		
-		assertEquals(book3.getContacts().keySet().size(), 2);
+		assertEquals(book3.getContacts().keySet().size(), 1);
 		assertEquals(book3.getContacts().get("Obi Wan Kenobi"), expectedObiWan3);
 	}
 

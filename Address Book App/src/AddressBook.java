@@ -7,7 +7,13 @@ public class AddressBook {
 		AddressBook combinedBook = new AddressBook();
 		HashMap<String, Contact> combinedBookContacts = combinedBook.getContacts();
 		combinedBookContacts.putAll(one.getContacts());
-		combinedBookContacts.putAll(two.getContacts());
+		for (String s:two.getContacts().keySet()) {
+			Contact current = one.getContacts().get(s);
+			if(two.getContacts().get(s) == null) {
+				combinedBookContacts.put(s, two.getContacts().get(s));
+			}
+		}
+			
 		return combinedBook;
 	}
 	
