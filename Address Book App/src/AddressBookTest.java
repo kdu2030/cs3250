@@ -243,7 +243,7 @@ class AddressBookTest {
 		book.addContact(obiWan);
 		AddressBook book2 = new AddressBook();
 		book2.addContact(obiWan2);
-		AddressBook book3 = AddressBook.combine(book, book2);
+		AddressBook book3 = AddressBook.combineTwo(book, book2);
 		
 		assertEquals(book3.getContacts().keySet().size(), 1);
 	}
