@@ -84,6 +84,15 @@ public class AddressBook {
 		this.contacts = contacts;
 	}
 	
+	@Override
+	public String toString() {
+		String output = "";
+		for(String key: contacts.keySet()) {
+			output += contacts.get(key).toString() + "\n";
+		}
+		return output;
+	}
+	
 	
 	
 
